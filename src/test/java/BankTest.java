@@ -38,4 +38,21 @@ public class BankTest {
         assertEquals(expectedBalanceFirstCard, actualBalanceFirstCard);
         assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard);
     }
+
+    @Test
+    void errorTransfer() {
+        var firstCardInfo = getFirstCardInfo();
+        var secondCardInfo = getSecondCardInfo();
+        var firstCardBalance = dashboardPage.getCardBalance(0);
+        var secondCardBalance = dashboardPage.getCardBalance(1);
+        var amount = generateInValidAmount(firstCardBalance);
+        var transferPage = dashboardPage.selectCard(firstCardInfo);
+        transferPage.makeTransfer(String.valueOf(amount), secondCardInfo);
+        transferPage.error();
+        var actualBalanceFirstCard = dashboardPage.getCardBalance(0);
+        var actualBalanceSecondCard = dashboardPage.getCardBalance(1);
+        assertEquals(firstCardBalance, actualBalanceFirstCard);
+        assertEquals(secondCardBalance, actualBalanceSecondCard);
+
+    }
 }

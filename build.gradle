@@ -16,6 +16,8 @@ repositories {
 
 dependencies {
     implementation 'com.codeborne:selenide:6.12.3'
+    implementation 'com.codeborne:selenide:6.12.3'
+    testImplementation 'com.codeborne:selenide:6.12.3'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
     testImplementation 'com.codeborne:selenide:6.12.3'
     testImplementation 'io.cucumber:cucumber-java:7.11.1'
